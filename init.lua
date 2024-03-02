@@ -19,20 +19,54 @@
 
 -- Conclusion
 -- For a plugin like copilot.vim, starting with monthly updates is a reasonable approach, adjusting based on your needs, the pace of development of the plugin, and how critical it is to your daily tasks. Always back up your current configuration before updating, so you can easily revert if an update causes issues.
+-- require("aroon.plugins-setup")
+-- require("aroon.core.options")
+-- require("aroon.core.keymaps")
+-- require("aroon.core.colorscheme")
+-- require("aroon.plugins.comment")
+-- require("aroon.plugins.nvim-tree")
+-- require("aroon.plugins.lualine")
+-- require("aroon.plugins.telescope")
+-- require("aroon.plugins.nvim-cmp")
+-- require("aroon.plugins.lsp.mason")
+-- require("aroon.plugins.lsp.lspsaga")
+-- require("aroon.plugins.lsp.lspconfig")
+-- require("aroon.plugins.lsp.null-ls")
+-- require("aroon.plugins.autopairs")
+-- require("aroon.plugins.treesitter")
+-- require("aroon.plugins.gitsigns")
+-- OLD!!!
 
-require("aroon.plugins-setup")
-require("aroon.core.options")
-require("aroon.core.keymaps")
-require("aroon.core.colorscheme")
-require("aroon.plugins.comment")
-require("aroon.plugins.nvim-tree")
-require("aroon.plugins.lualine")
-require("aroon.plugins.telescope")
-require("aroon.plugins.nvim-cmp")
-require("aroon.plugins.lsp.mason")
-require("aroon.plugins.lsp.lspsaga")
-require("aroon.plugins.lsp.lspconfig")
-require("aroon.plugins.lsp.null-ls")
-require("aroon.plugins.autopairs")
-require("aroon.plugins.treesitter")
-require("aroon.plugins.gitsigns")
+-- Enhacnements:
+-- 1. Safe require
+local safe_require = function(path)
+	local status, module = pcall(require, path)
+	if not status then
+		vim.notify("Failed to load " .. path, vim.log.levels.WARN)
+	end
+	return module
+end
+
+safe_require("aroon.plugins-setup")
+safe_require("aroon.plugins-setup")
+safe_require("aroon.core.options")
+safe_require("aroon.core.keymaps")
+safe_require("aroon.core.colorscheme")
+safe_require("aroon.plugins.comment")
+safe_require("aroon.plugins.nvim-tree")
+safe_require("aroon.plugins.lualine")
+safe_require("aroon.plugins.telescope")
+safe_require("aroon.plugins.nvim-cmp")
+safe_require("aroon.plugins.lsp.mason")
+safe_require("aroon.plugins.lsp.lspsaga")
+safe_require("aroon.plugins.lsp.lspconfig")
+safe_require("aroon.plugins.lsp.null-ls")
+safe_require("aroon.plugins.autopairs")
+safe_require("aroon.plugins.treesitter")
+safe_require("aroon.plugins.gitsigns")
+
+-- Improvements to be made:
+-- Dynamic Loading for Performance: For configurations that are not always needed, consider using lazy-loading techniques to improve startup time. Packer supports lazy-loading plugins based on commands, file types, or events. While this approach is more about plugin loading than configuration, structuring your init.lua to take advantage of lazy loading can further optimize performance.
+-- Documenting Your Configuration: Comments can greatly improve the maintainability of your configuration, especially if you or someone else comes back to it after some time. Consider adding comments to your init.lua and other configuration files to explain the purpose of each section or important settings.
+-- Consolidation of LSP Configurations: Your LSP-related configurations (mason, lspsaga, lspconfig, null-ls) are separated into different files, which is great for organization. However, if these configurations share common setups or could be streamlined, consider creating a unified LSP configuration file that handles the setup for all LSP-related functionality cohesively.
+-- Version Control: If not already done, consider version-controlling your Neovim configuration using Git. This allows you to track changes, revert to previous states if an issue arises, and share your configuration easily with others or across machines.
