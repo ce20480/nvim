@@ -103,6 +103,17 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- Add nvim-treesitter-context plugin here
+	use({
+		"nvim-treesitter/nvim-treesitter-context",
+		requires = "nvim-treesitter/nvim-treesitter", -- Make sure to load after nvim-treesitter
+		config = function()
+			require("treesitter-context").setup({
+				-- Add your configuration here
+			})
+		end,
+	})
+
 	-- auto closing
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags

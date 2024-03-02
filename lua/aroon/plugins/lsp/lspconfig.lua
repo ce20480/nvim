@@ -217,8 +217,9 @@ local server_settings = {
 					autoSearchPaths = true,
 					diagnosticMode = "workspace",
 					useLibraryCodeForTypes = true,
+					-- pythonPath = "/Users/aaronvinod/opt/anaconda3/envs/testenv/bin/python", -- manually force pythonPath
 					-- Configure stubPath for better type information in completions (if necessary)
-					-- stubPath = vim.fn.expand("~/.config/coc/extensions/coc-pyright-data/stubs"),
+					stubPath = vim.fn.expand("~/.config/coc/extensions/coc-pyright-data/stubs"),
 				},
 			},
 		},
