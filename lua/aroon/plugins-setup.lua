@@ -121,7 +121,117 @@ return packer.startup(function(use)
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
+	-- which-key.nvim
+	use({ "folke/which-key.nvim" })
+	-- 	config = function()
+	-- 		local status_ok, which_key = pcall(require, "plugins.which-key")
+	-- 		if not status_ok then
+	-- 			print("Failed to load which-key")
+	-- 			return
+	-- 		end
+	-- 		which_key.setup({
+	-- 			-- Your setup here
+	-- 		})
+	-- 	end,
+	-- })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
 end)
+--
+-- This is beginning for lazy loading plugins
+-- return require("packer").startup(function(use)
+-- 	use({ "wbthomason/packer.nvim" })
+-- 	use({ "nvim-lua/plenary.nvim" })
+--
+-- 	-- Lazy load themes, only when a colorscheme command is issued
+-- 	use({ "bluz71/vim-nightfly-guicolors", opt = true, cmd = { "colorscheme nightfly" } })
+--
+-- 	-- Lazy load tmux navigator only if tmux is detected
+-- 	use({
+-- 		"christoomey/vim-tmux-navigator",
+-- 		cond = function()
+-- 			return vim.env.TMUX
+-- 		end,
+-- 	})
+--
+-- 	-- Maximizer can be lazy loaded on its command
+-- 	use({ "szw/vim-maximizer", cmd = "MaximizerToggle" })
+--
+-- 	-- Surround and register plugins are essential but don't need to be loaded immediately
+-- 	use({ "tpope/vim-surround", keys = { "c", "d", "y" } })
+-- 	use({ "inkarkat/vim-ReplaceWithRegister", keys = { "gr" } })
+--
+-- 	-- Commenting
+-- 	use({
+-- 		"numToStr/Comment.nvim",
+-- 		keys = { "gc", "gb" },
+-- 		config = function()
+-- 			require("Comment").setup()
+-- 		end,
+-- 	})
+--
+-- 	-- File explorer
+-- 	use({ "nvim-tree/nvim-tree.lua", requires = "nvim-tree/nvim-web-devicons", cmd = "NvimTreeToggle" })
+--
+-- 	-- Status line
+-- 	use({ "nvim-lualine/lualine.nvim", event = "VimEnter" })
+--
+-- 	-- Telescope and its extensions
+-- 	use({
+-- 		"nvim-telescope/telescope.nvim",
+-- 		requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
+-- 		cmd = "Telescope",
+-- 	})
+--
+-- 	-- Autocompletion and snippets
+-- 	use({
+-- 		"hrsh7th/nvim-cmp",
+-- 		requires = {
+-- 			"hrsh7th/cmp-nvim-lsp",
+-- 			"hrsh7th/cmp-buffer",
+-- 			"hrsh7th/cmp-path",
+-- 			"saadparwaiz1/cmp_luasnip",
+-- 			"L3MON4D3/LuaSnip",
+-- 			"rafamadriz/friendly-snippets",
+-- 		},
+-- 		event = "InsertEnter",
+-- 	})
+--
+-- 	-- LSP, formatting, and linting
+-- 	use({
+-- 		"neovim/nvim-lspconfig",
+-- 		"williamboman/mason.nvim",
+-- 		"williamboman/mason-lspconfig.nvim",
+-- 		"jose-elias-alvarez/null-ls.nvim",
+-- 		event = "BufReadPre",
+-- 	})
+--
+-- 	-- Treesitter for improved syntax highlighting
+-- 	use({
+-- 		"nvim-treesitter/nvim-treesitter",
+-- 		run = ":TSUpdate",
+-- 		event = "BufRead",
+-- 		config = function()
+-- 			require("nvim-treesitter.configs").setup({ highlight = { enable = true }, indent = { enable = true } })
+-- 		end,
+-- 	})
+--
+-- 	-- Treesitter context for showing the current function/class context at the top
+-- 	use({
+-- 		"nvim-treesitter/nvim-treesitter-context",
+-- 		after = "nvim-treesitter",
+-- 		config = function()
+-- 			require("treesitter-context").setup()
+-- 		end,
+-- 	})
+--
+-- 	-- Git integration
+-- 	use({ "lewis6991/gitsigns.nvim", event = "BufRead" })
+--
+-- 	-- Check if packer needs to install plugins on first run
+-- 	if packer_bootstrap then
+-- 		require("packer").sync()
+-- 	end
+-- end)
