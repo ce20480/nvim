@@ -1,3 +1,4 @@
+-- Installation using packer
 -- auto install packer if not installed
 local ensure_packer = function()
 	local fn = vim.fn
@@ -13,7 +14,7 @@ local packer_bootstrap = ensure_packer() -- true if packer was just installed
 
 -- autocommand that reloads neovim and installs/updates/removes plugins
 -- when file is saved
-vim.cmd([[ 
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
@@ -26,6 +27,8 @@ if not status then
 	return
 end
 
+-- set mapleader
+vim.g.mapleader = " "
 -- add list of plugins to install
 return packer.startup(function(use)
 	-- packer can manage itself
@@ -118,9 +121,111 @@ return packer.startup(function(use)
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
-	-- git integration
-	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+	-- gitsigns.nvim for Git signs and more
+	use({
+		"lewis6991/gitsigns.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("gitsigns").setup({
+				on_attach = function(bufnr)
+					local gs = package.loaded.gitsigns
 
+					local function map(mode, l, r, opts)
+						opts = opts or {}
+						opts.buffer = bufnr
+						vim.keymap.set(mode, l, r, opts)
+					end
+
+					-- Navigation
+					map("n", "<leader>gn", function()
+						gs.next_hunk()
+					end)
+					map("n", "<leader>gp", function()
+						gs.prev_hunk()
+					end)
+
+					-- Actions
+					map("n", "<leader>hs", function()
+						gs.stage_hunk()
+					end)
+					map("n", "<leader>hr", function()
+						gs.reset_hunk()
+					end)
+					map("v", "<leader>hs", function()
+						gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+					end)
+					map("v", "<leader>hr", function()
+						gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+					end)
+					map("n", "<leader>hS", gs.stage_buffer)
+					map("n", "<leader>hu", gs.undo_stage_hunk)
+					map("n", "<leader>hR", gs.reset_buffer)
+					map("n", "<leader>hp", gs.preview_hunk)
+					map("n", "<leader>hb", function()
+						gs.blame_line({ full = true })
+					end)
+					map("n", "<leader>tb", gs.toggle_current_line_blame)
+					map("n", "<leader>hd", gs.diffthis)
+					map("n", "<leader>hD", function()
+						gs.diffthis("~")
+					end)
+					map("n", "<leader>td", gs.toggle_deleted)
+
+					-- ... Add more mappings as needed
+				end,
+			})
+		end,
+	})
+
+	-- fugitive git integration
+	use({
+		"tpope/vim-fugitive",
+		cmd = {
+			"Gstatus",
+			"Git",
+			"Gdiffsplit",
+			"Gread",
+			"Gwrite",
+			"Ggrep",
+			"GMove",
+			"GDelete",
+			"GBrowse",
+			"GRemove",
+			"GRename",
+			"Glgrep",
+			"Glog",
+			"Gedit",
+		},
+		requires = { "tpope/vim-rhubarb" }, -- Optional: for GitHub integration
+		config = function()
+			-- Open Git status in a new split
+			vim.api.nvim_set_keymap("n", "<leader>gS", ":Git<CR>", { noremap = true, silent = true })
+
+			-- Add one file at a time to staging
+			vim.api.nvim_set_keymap("n", "<leader>ga", ":Git add %<CR>", { noremap = true, silent = true })
+
+			-- Add one file at a time to staging
+			-- vim.api.nvim_set_keymap("n", "<leader>gu", ":Git reset HEAD -- %<CR>", { noremap = true, silent = true })
+			--
+			-- -- Add files to staging
+			-- vim.api.nvim_set_keymap("n", "<leader>gA", ":Git add .<CR>", { noremap = true, silent = true })
+			--
+			-- -- Commit changes with a prompt for commit message
+			-- vim.api.nvim_set_keymap("n", "<leader>gC", ":Git commit<CR>", { noremap = true, silent = true })
+			--
+			-- -- Push changes to the remote repository
+			-- vim.api.nvim_set_keymap("n", "<leader>gP", ":Git push<CR>", { noremap = true, silent = true })
+			--
+			-- -- Pull changes from the remote repository
+			-- vim.api.nvim_set_keymap("n", "<leader>gL", ":Git pull<CR>", { noremap = true, silent = true })
+			--
+			-- -- Open Git diff for the current file
+			-- vim.api.nvim_set_keymap("n", "<leader>gD", ":Gdiffsplit<CR>", { noremap = true, silent = true })
+			--
+			-- -- Browse repository files
+			-- vim.api.nvim_set_keymap("n", "<leader>gb", ":Git blame<CR>", { noremap = true, silent = true })
+		end,
+	})
 	-- which-key.nvim
 	use({ "folke/which-key.nvim" })
 	-- 	config = function()
@@ -140,98 +245,94 @@ return packer.startup(function(use)
 	end
 end)
 --
--- This is beginning for lazy loading plugins
--- return require("packer").startup(function(use)
--- 	use({ "wbthomason/packer.nvim" })
--- 	use({ "nvim-lua/plenary.nvim" })
---
--- 	-- Lazy load themes, only when a colorscheme command is issued
--- 	use({ "bluz71/vim-nightfly-guicolors", opt = true, cmd = { "colorscheme nightfly" } })
---
--- 	-- Lazy load tmux navigator only if tmux is detected
--- 	use({
--- 		"christoomey/vim-tmux-navigator",
--- 		cond = function()
--- 			return vim.env.TMUX
--- 		end,
+-- This is beginning for lazy loading plugins, attempt to lazy load all plugins
+-- Install lazylazy
+-- local lazypath = vim.fn.stdpath("data") .. "/site/pack/lazy/start/lazy.nvim"
+-- if not vim.loop.fs_stat(lazypath) then
+-- 	vim.fn.system({
+-- 		"git",
+-- 		"clone",
+-- 		"--filter=blob:none",
+-- 		"https://github.com/folke/lazy.nvim.git",
+-- 		"--branch=stable", -- latest stable release
+-- 		lazypath,
 -- 	})
+-- end
+-- vim.opt.rtp:prepend(lazypath)
 --
--- 	-- Maximizer can be lazy loaded on its command
--- 	use({ "szw/vim-maximizer", cmd = "MaximizerToggle" })
+-- -- Lazy loading configuration
+-- require("lazy").setup({
+-- 	-- Packer can manage itself
+-- 	{ "wbthomason/packer.nvim" },
 --
--- 	-- Surround and register plugins are essential but don't need to be loaded immediately
--- 	use({ "tpope/vim-surround", keys = { "c", "d", "y" } })
--- 	use({ "inkarkat/vim-ReplaceWithRegister", keys = { "gr" } })
+-- 	-- Essential utilities
+-- 	{ "nvim-lua/plenary.nvim" },
+-- 	{ "nvim-lua/popup.nvim" },
 --
--- 	-- Commenting
--- 	use({
+-- 	-- UI Enhancements
+-- 	{ "bluz71/vim-nightfly-guicolors", event = "VimEnter" },
+-- 	{ "kyazdani42/nvim-web-devicons", event = "VimEnter" }, -- Dependency for several plugins requiring icons
+-- 	{
+-- 		"nvim-lualine/lualine.nvim",
+-- 		event = "VimEnter",
+-- 		config = function()
+-- 			require("lualine").setup()
+-- 		end,
+-- 	},
+--
+-- 	-- Navigation
+-- 	{ "christoomey/vim-tmux-navigator", event = "VimEnter" },
+--
+-- 	-- Editing Enhancements
+-- 	{ "tpope/vim-surround", keys = { "c", "d", "y" } },
+-- 	{
 -- 		"numToStr/Comment.nvim",
 -- 		keys = { "gc", "gb" },
 -- 		config = function()
 -- 			require("Comment").setup()
 -- 		end,
--- 	})
+-- 	},
 --
--- 	-- File explorer
--- 	use({ "nvim-tree/nvim-tree.lua", requires = "nvim-tree/nvim-web-devicons", cmd = "NvimTreeToggle" })
+-- 	-- File and Project Navigation
+-- 	{ "nvim-tree/nvim-tree.lua", cmd = "NvimTreeToggle", requires = "nvim-tree/nvim-web-devicons" },
 --
--- 	-- Status line
--- 	use({ "nvim-lualine/lualine.nvim", event = "VimEnter" })
---
--- 	-- Telescope and its extensions
--- 	use({
+-- 	-- Telescope and Extensions
+-- 	{
 -- 		"nvim-telescope/telescope.nvim",
--- 		requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
 -- 		cmd = "Telescope",
--- 	})
+-- 		requires = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+-- 	},
 --
--- 	-- Autocompletion and snippets
--- 	use({
--- 		"hrsh7th/nvim-cmp",
--- 		requires = {
--- 			"hrsh7th/cmp-nvim-lsp",
--- 			"hrsh7th/cmp-buffer",
--- 			"hrsh7th/cmp-path",
--- 			"saadparwaiz1/cmp_luasnip",
--- 			"L3MON4D3/LuaSnip",
--- 			"rafamadriz/friendly-snippets",
--- 		},
--- 		event = "InsertEnter",
--- 	})
---
--- 	-- LSP, formatting, and linting
--- 	use({
+-- 	-- LSP, Autocompletion, and Snippets
+-- 	{
 -- 		"neovim/nvim-lspconfig",
 -- 		"williamboman/mason.nvim",
 -- 		"williamboman/mason-lspconfig.nvim",
--- 		"jose-elias-alvarez/null-ls.nvim",
+-- 		"hrsh7th/nvim-cmp",
+-- 		"hrsh7th/cmp-nvim-lsp",
+-- 		"hrsh7th/cmp-buffer",
+-- 		"hrsh7th/cmp-path",
+-- 		"L3MON4D3/LuaSnip",
+-- 		"saadparwaiz1/cmp_luasnip",
+-- 		"rafamadriz/friendly-snippets",
 -- 		event = "BufReadPre",
--- 	})
+-- 		config = function()
+-- 			require("user.lsp") -- Assuming you have an LSP config file in 'user/lsp.lua'
+-- 		end,
+-- 	},
 --
 -- 	-- Treesitter for improved syntax highlighting
--- 	use({
--- 		"nvim-treesitter/nvim-treesitter",
--- 		run = ":TSUpdate",
--- 		event = "BufRead",
--- 		config = function()
--- 			require("nvim-treesitter.configs").setup({ highlight = { enable = true }, indent = { enable = true } })
--- 		end,
--- 	})
---
--- 	-- Treesitter context for showing the current function/class context at the top
--- 	use({
--- 		"nvim-treesitter/nvim-treesitter-context",
--- 		after = "nvim-treesitter",
--- 		config = function()
--- 			require("treesitter-context").setup()
--- 		end,
--- 	})
+-- 	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", event = "BufRead" },
 --
 -- 	-- Git integration
--- 	use({ "lewis6991/gitsigns.nvim", event = "BufRead" })
+-- 	{ "lewis6991/gitsigns.nvim", event = "BufRead" },
 --
--- 	-- Check if packer needs to install plugins on first run
--- 	if packer_bootstrap then
--- 		require("packer").sync()
--- 	end
--- end)
+-- 	-- Which-key integration
+-- 	{
+-- 		"folke/which-key.nvim",
+-- 		keys = " ",
+-- 		config = function()
+-- 			require("which-key").setup()
+-- 		end,
+-- 	},
+-- })
