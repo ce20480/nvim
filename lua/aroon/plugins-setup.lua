@@ -205,25 +205,25 @@ return packer.startup(function(use)
 			vim.api.nvim_set_keymap("n", "<leader>ga", ":Git add %<CR>", { noremap = true, silent = true })
 
 			-- Add one file at a time to staging
-			-- vim.api.nvim_set_keymap("n", "<leader>gu", ":Git reset HEAD -- %<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>gu", ":Git reset HEAD -- %<CR>", { noremap = true, silent = true })
 			--
 			-- -- Add files to staging
-			-- vim.api.nvim_set_keymap("n", "<leader>gA", ":Git add .<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>gA", ":Git add .<CR>", { noremap = true, silent = true })
 			--
 			-- -- Commit changes with a prompt for commit message
-			-- vim.api.nvim_set_keymap("n", "<leader>gC", ":Git commit<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>gC", ":Git commit<CR>", { noremap = true, silent = true })
 			--
 			-- -- Push changes to the remote repository
-			-- vim.api.nvim_set_keymap("n", "<leader>gP", ":Git push<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>gP", ":Git push<CR>", { noremap = true, silent = true })
 			--
 			-- -- Pull changes from the remote repository
-			-- vim.api.nvim_set_keymap("n", "<leader>gL", ":Git pull<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>gL", ":Git pull<CR>", { noremap = true, silent = true })
 			--
 			-- -- Open Git diff for the current file
-			-- vim.api.nvim_set_keymap("n", "<leader>gD", ":Gdiffsplit<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>gD", ":Gdiffsplit<CR>", { noremap = true, silent = true })
 			--
 			-- -- Browse repository files
-			-- vim.api.nvim_set_keymap("n", "<leader>gb", ":Git blame<CR>", { noremap = true, silent = true })
+			vim.api.nvim_set_keymap("n", "<leader>gb", ":Git blame<CR>", { noremap = true, silent = true })
 		end,
 	})
 	-- which-key.nvim

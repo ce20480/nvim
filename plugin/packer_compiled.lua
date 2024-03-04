@@ -225,7 +225,7 @@ _G.packer_plugins = {
   },
   ["vim-fugitive"] = {
     commands = { "Gstatus", "Git", "Gdiffsplit", "Gread", "Gwrite", "Ggrep", "GMove", "GDelete", "GBrowse", "GRemove", "GRename", "Glgrep", "Glog", "Gedit" },
-    config = { "\27LJ\2\n»\1\0\0\6\0\n\0\0176\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0'\4\5\0005\5\6\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\a\0'\4\b\0005\5\t\0B\0\5\1K\0\1\0\1\0\2\vsilent\2\fnoremap\2\19:Git add %<CR>\15<leader>ga\1\0\2\vsilent\2\fnoremap\2\r:Git<CR>\15<leader>gS\6n\20nvim_set_keymap\bapi\bvim\0" },
+    config = { "\27LJ\2\nç\5\0\0\6\0\31\0I6\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\4\0'\4\5\0005\5\6\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\a\0'\4\b\0005\5\t\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\n\0'\4\v\0005\5\f\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\r\0'\4\14\0005\5\15\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\16\0'\4\17\0005\5\18\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\19\0'\4\20\0005\5\21\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\22\0'\4\23\0005\5\24\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\25\0'\4\26\0005\5\27\0B\0\5\0016\0\0\0009\0\1\0009\0\2\0'\2\3\0'\3\28\0'\4\29\0005\5\30\0B\0\5\1K\0\1\0\1\0\2\vsilent\2\fnoremap\2\19:Git blame<CR>\15<leader>gb\1\0\2\vsilent\2\fnoremap\2\20:Gdiffsplit<CR>\15<leader>gD\1\0\2\vsilent\2\fnoremap\2\18:Git pull<CR>\15<leader>gL\1\0\2\vsilent\2\fnoremap\2\18:Git push<CR>\15<leader>gP\1\0\2\vsilent\2\fnoremap\2\20:Git commit<CR>\15<leader>gC\1\0\2\vsilent\2\fnoremap\2\19:Git add .<CR>\15<leader>gA\1\0\2\vsilent\2\fnoremap\2\29:Git reset HEAD -- %<CR>\15<leader>gu\1\0\2\vsilent\2\fnoremap\2\19:Git add %<CR>\15<leader>ga\1\0\2\vsilent\2\fnoremap\2\r:Git<CR>\15<leader>gS\6n\20nvim_set_keymap\bapi\bvim\0" },
     loaded = false,
     needs_bufread = true,
     only_cond = false,
@@ -265,14 +265,14 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: gitsigns.nvim
-time([[Config for gitsigns.nvim]], true)
-try_loadstring("\27LJ\2\nW\0\4\n\1\4\0\14\14\0\3\0X\4\1€4\3\0\0-\4\0\0=\4\0\0036\4\1\0009\4\2\0049\4\3\4\18\6\0\0\18\a\1\0\18\b\2\0\18\t\3\0B\4\5\1K\0\1\0\0À\bset\vkeymap\bvim\vbuffer#\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\1À\14next_hunk#\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\1À\14prev_hunk$\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\1À\15stage_hunk$\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\1À\15reset_hunkn\0\0\6\1\6\1\17-\0\0\0009\0\0\0004\2\3\0006\3\1\0009\3\2\0039\3\3\3'\5\4\0B\3\2\2>\3\1\0026\3\1\0009\3\2\0039\3\3\3'\5\5\0B\3\2\0?\3\0\0B\0\2\1K\0\1\0\1À\6v\6.\tline\afn\bvim\15stage_hunk\5€€À™\4n\0\0\6\1\6\1\17-\0\0\0009\0\0\0004\2\3\0006\3\1\0009\3\2\0039\3\3\3'\5\4\0B\3\2\2>\3\1\0026\3\1\0009\3\2\0039\3\3\3'\5\5\0B\3\2\0?\3\0\0B\0\2\1K\0\1\0\1À\6v\6.\tline\afn\bvim\15reset_hunk\5€€À™\0041\0\0\3\1\2\0\5-\0\0\0009\0\0\0005\2\1\0B\0\2\1K\0\1\0\1À\1\0\1\tfull\2\15blame_line(\0\0\3\1\2\0\5-\0\0\0009\0\0\0'\2\1\0B\0\2\1K\0\1\0\1À\6~\rdiffthisè\4\1\1\b\0\"\0Q6\1\0\0009\1\1\0019\1\2\0013\2\3\0\18\3\2\0'\5\4\0'\6\5\0003\a\6\0B\3\4\1\18\3\2\0'\5\4\0'\6\a\0003\a\b\0B\3\4\1\18\3\2\0'\5\4\0'\6\t\0003\a\n\0B\3\4\1\18\3\2\0'\5\4\0'\6\v\0003\a\f\0B\3\4\1\18\3\2\0'\5\r\0'\6\t\0003\a\14\0B\3\4\1\18\3\2\0'\5\r\0'\6\v\0003\a\15\0B\3\4\1\18\3\2\0'\5\4\0'\6\16\0009\a\17\1B\3\4\1\18\3\2\0'\5\4\0'\6\18\0009\a\19\1B\3\4\1\18\3\2\0'\5\4\0'\6\20\0009\a\21\1B\3\4\1\18\3\2\0'\5\4\0'\6\22\0009\a\23\1B\3\4\1\18\3\2\0'\5\4\0'\6\24\0003\a\25\0B\3\4\1\18\3\2\0'\5\4\0'\6\26\0009\a\27\1B\3\4\1\18\3\2\0'\5\4\0'\6\28\0009\a\29\1B\3\4\1\18\3\2\0'\5\4\0'\6\30\0003\a\31\0B\3\4\1\18\3\2\0'\5\4\0'\6 \0009\a!\1B\3\4\0012\0\0€K\0\1\0\19toggle_deleted\15<leader>td\0\15<leader>hD\rdiffthis\15<leader>hd\30toggle_current_line_blame\15<leader>tb\0\15<leader>hb\17preview_hunk\15<leader>hp\17reset_buffer\15<leader>hR\20undo_stage_hunk\15<leader>hu\17stage_buffer\15<leader>hS\0\0\6v\0\15<leader>hr\0\15<leader>hs\0\15<leader>gp\0\15<leader>gn\6n\0\rgitsigns\vloaded\fpackageP\1\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\1K\0\1\0\14on_attach\1\0\0\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
-time([[Config for gitsigns.nvim]], false)
 -- Config for: nvim-treesitter-context
 time([[Config for nvim-treesitter-context]], true)
 try_loadstring("\27LJ\2\nD\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\23treesitter-context\frequire\0", "config", "nvim-treesitter-context")
 time([[Config for nvim-treesitter-context]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\2\nW\0\4\n\1\4\0\14\14\0\3\0X\4\1€4\3\0\0-\4\0\0=\4\0\0036\4\1\0009\4\2\0049\4\3\4\18\6\0\0\18\a\1\0\18\b\2\0\18\t\3\0B\4\5\1K\0\1\0\0À\bset\vkeymap\bvim\vbuffer#\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\1À\14next_hunk#\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\1À\14prev_hunk$\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\1À\15stage_hunk$\0\0\2\1\1\0\4-\0\0\0009\0\0\0B\0\1\1K\0\1\0\1À\15reset_hunkn\0\0\6\1\6\1\17-\0\0\0009\0\0\0004\2\3\0006\3\1\0009\3\2\0039\3\3\3'\5\4\0B\3\2\2>\3\1\0026\3\1\0009\3\2\0039\3\3\3'\5\5\0B\3\2\0?\3\0\0B\0\2\1K\0\1\0\1À\6v\6.\tline\afn\bvim\15stage_hunk\5€€À™\4n\0\0\6\1\6\1\17-\0\0\0009\0\0\0004\2\3\0006\3\1\0009\3\2\0039\3\3\3'\5\4\0B\3\2\2>\3\1\0026\3\1\0009\3\2\0039\3\3\3'\5\5\0B\3\2\0?\3\0\0B\0\2\1K\0\1\0\1À\6v\6.\tline\afn\bvim\15reset_hunk\5€€À™\0041\0\0\3\1\2\0\5-\0\0\0009\0\0\0005\2\1\0B\0\2\1K\0\1\0\1À\1\0\1\tfull\2\15blame_line(\0\0\3\1\2\0\5-\0\0\0009\0\0\0'\2\1\0B\0\2\1K\0\1\0\1À\6~\rdiffthisè\4\1\1\b\0\"\0Q6\1\0\0009\1\1\0019\1\2\0013\2\3\0\18\3\2\0'\5\4\0'\6\5\0003\a\6\0B\3\4\1\18\3\2\0'\5\4\0'\6\a\0003\a\b\0B\3\4\1\18\3\2\0'\5\4\0'\6\t\0003\a\n\0B\3\4\1\18\3\2\0'\5\4\0'\6\v\0003\a\f\0B\3\4\1\18\3\2\0'\5\r\0'\6\t\0003\a\14\0B\3\4\1\18\3\2\0'\5\r\0'\6\v\0003\a\15\0B\3\4\1\18\3\2\0'\5\4\0'\6\16\0009\a\17\1B\3\4\1\18\3\2\0'\5\4\0'\6\18\0009\a\19\1B\3\4\1\18\3\2\0'\5\4\0'\6\20\0009\a\21\1B\3\4\1\18\3\2\0'\5\4\0'\6\22\0009\a\23\1B\3\4\1\18\3\2\0'\5\4\0'\6\24\0003\a\25\0B\3\4\1\18\3\2\0'\5\4\0'\6\26\0009\a\27\1B\3\4\1\18\3\2\0'\5\4\0'\6\28\0009\a\29\1B\3\4\1\18\3\2\0'\5\4\0'\6\30\0003\a\31\0B\3\4\1\18\3\2\0'\5\4\0'\6 \0009\a!\1B\3\4\0012\0\0€K\0\1\0\19toggle_deleted\15<leader>td\0\15<leader>hD\rdiffthis\15<leader>hd\30toggle_current_line_blame\15<leader>tb\0\15<leader>hb\17preview_hunk\15<leader>hp\17reset_buffer\15<leader>hR\20undo_stage_hunk\15<leader>hu\17stage_buffer\15<leader>hS\0\0\6v\0\15<leader>hr\0\15<leader>hs\0\15<leader>gp\0\15<leader>gn\6n\0\rgitsigns\vloaded\fpackageP\1\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0003\3\3\0=\3\5\2B\0\2\1K\0\1\0\14on_attach\1\0\0\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-treesitter ]]
@@ -281,34 +281,6 @@ time([[Sequenced loading]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
-pcall(vim.api.nvim_create_user_command, 'GRename', function(cmdargs)
-          require('packer.load')({'vim-fugitive'}, { cmd = 'GRename', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-fugitive'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('GRename ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'Glgrep', function(cmdargs)
-          require('packer.load')({'vim-fugitive'}, { cmd = 'Glgrep', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-fugitive'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('Glgrep ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'Glog', function(cmdargs)
-          require('packer.load')({'vim-fugitive'}, { cmd = 'Glog', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-fugitive'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('Glog ', 'cmdline')
-      end})
-pcall(vim.api.nvim_create_user_command, 'Gedit', function(cmdargs)
-          require('packer.load')({'vim-fugitive'}, { cmd = 'Gedit', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
-        end,
-        {nargs = '*', range = true, bang = true, complete = function()
-          require('packer.load')({'vim-fugitive'}, {}, _G.packer_plugins)
-          return vim.fn.getcompletion('Gedit ', 'cmdline')
-      end})
 pcall(vim.api.nvim_create_user_command, 'Gstatus', function(cmdargs)
           require('packer.load')({'vim-fugitive'}, { cmd = 'Gstatus', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
         end,
@@ -378,6 +350,34 @@ pcall(vim.api.nvim_create_user_command, 'GRemove', function(cmdargs)
         {nargs = '*', range = true, bang = true, complete = function()
           require('packer.load')({'vim-fugitive'}, {}, _G.packer_plugins)
           return vim.fn.getcompletion('GRemove ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'GRename', function(cmdargs)
+          require('packer.load')({'vim-fugitive'}, { cmd = 'GRename', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-fugitive'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('GRename ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Glgrep', function(cmdargs)
+          require('packer.load')({'vim-fugitive'}, { cmd = 'Glgrep', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-fugitive'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Glgrep ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Glog', function(cmdargs)
+          require('packer.load')({'vim-fugitive'}, { cmd = 'Glog', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-fugitive'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Glog ', 'cmdline')
+      end})
+pcall(vim.api.nvim_create_user_command, 'Gedit', function(cmdargs)
+          require('packer.load')({'vim-fugitive'}, { cmd = 'Gedit', l1 = cmdargs.line1, l2 = cmdargs.line2, bang = cmdargs.bang, args = cmdargs.args, mods = cmdargs.mods }, _G.packer_plugins)
+        end,
+        {nargs = '*', range = true, bang = true, complete = function()
+          require('packer.load')({'vim-fugitive'}, {}, _G.packer_plugins)
+          return vim.fn.getcompletion('Gedit ', 'cmdline')
       end})
 time([[Defining lazy-load commands]], false)
 
